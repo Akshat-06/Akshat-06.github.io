@@ -191,3 +191,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }, initialDelay);
     }
 });
+
+// ==========================================
+// PORTFOLIO MASTER SWITCH
+// Change this to 'false' when you are ready to launch!
+// ==========================================
+const SHOW_WIP_PAGE = false;
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Toggle the views based on the Master Switch
+    const wipView = document.getElementById('wip-view');
+    const mainView = document.getElementById('main-view');
+
+    if (SHOW_WIP_PAGE) {
+        if (wipView) wipView.style.display = 'block';
+        if (mainView) mainView.style.display = 'none';
+    } else {
+        if (wipView) wipView.style.display = 'none';
+        if (mainView) mainView.style.display = 'block';
+    }
+
+    // ... [KEEP THE REST OF YOUR JS HERE: Year footer, Smooth Scroll, Typewriter effect] ...
+});

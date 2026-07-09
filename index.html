@@ -3,23 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akshat Bheda - Loading...</title>
+    <title>Akshat Bheda - Unity Game Developer</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Icon Library for Footer Social Links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <header class="section hero-bg text-center">
-        <div class="container">
-            <!-- Typewriter header with inline blinking cursor -->
-            <h1 class="hero-title"><span id="loading-text">Compiling Shaders...</span><span class="blink">_</span></h1>
-            <p class="hero-subtitle margin-bottom-2">Akshat Bheda | Unity Game Developer</p>
-            
-            <p class="hero-text margin-bottom-2">My new portfolio is currently in development. While the physics bake and the lighting builds, you can still check out my work or connect with me below.</p>
-            
-        </div>
-    </header>
+    <!-- ========================= -->
+    <!--       WIP PAGE VIEW       -->
+    <!-- ========================= -->
+    <div id="wip-view">
+        <header class="section hero-bg text-center">
+            <div class="container">
+                <h1 class="hero-title"><span id="loading-text">Compiling Shaders...</span><span class="blink">_</span></h1>
+                <p class="hero-subtitle margin-bottom-2">Akshat Bheda | Unity Game Developer</p>
+                <p class="hero-text margin-bottom-2">My new portfolio is currently in development. While the physics bake and the lighting builds, you can still check out my work or connect with me below.</p>
+                
+            </div>
+        </header>
+    </div>
 
+    <!-- ========================= -->
+    <!--    MAIN PORTFOLIO VIEW    -->
+    <!-- ========================= -->
+    <div id="main-view" style="display: none;">
+        
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="container flex-row space-between">
+                <h1 class="logo">Akshat Bheda</h1>
+                <ul class="nav-links flex-row">
+                    <li><a href="#about" class="nav-link">About & Work</a></li>
+                    <li><a href="#projects" class="nav-link">Games</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header id="hero" class="section hero-bg text-center">
+            <div class="container">
+                <h2 class="hero-title">Hi, I'm Akshat Bheda</h2>
+                <p class="hero-subtitle">Unity Game Developer</p>
+                <p class="hero-text">I build smooth, engaging, and high-performance games for mobile, PC, and the web.</p>
+                <a href="#projects" class="btn btn-primary">Play My Games</a>
+            </div>
+        </header>
+
+        <!-- About & Work Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">What I Do</h2>
+                <div class="content-block">
+                    <p>With over 4+ years of experience in game development, I take ideas from the drawing board all the way to published, playable games. Whether I am working on a mobile app, a web-based game, or exploring Virtual Reality, my goal is always to create a seamless experience for the player.</p>
+                    <br>
+                    <p><strong>My Approach:</strong></p>
+                    <ul>
+                        <li><strong>Building the Foundation:</strong> I write clean, modular code that acts as the sturdy backbone for any game, making it easy to add new features later.</li>
+                        <li><strong>Performance First:</strong> I optimise games so they look beautiful without draining battery life or lagging on older devices.</li>
+                        <li><strong>Connecting Players:</strong> I build the networking systems that allow for multiplayer gameplay, live leaderboards, and real-time updates.</li>
+                        <li><strong>Creating Tools:</strong> I build custom software tools that help my whole team work faster and more efficiently.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Itch.io Showcase) -->
+        <section id="projects" class="section bg-alt">
+            <div class="container">
+                <h2 class="section-title">Latest Releases</h2>
+                <p class="text-center margin-bottom-2">Check out my recent playable builds and prototypes.</p>
+                
+                <div class="grid-3">
+                    <!-- Itch.io Game 1 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <img src="cover_images/cover_unimayhm.png" alt="Unicycle Mayhem Cover" class="card-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Unicycle Mayhem - Obstacle run</h3>
+                            <p class="card-text">A physics-driven 3D platformer where you navigate a chaotic obstacle course on a unicycle. It features ragdoll mechanics and layered difficulty to test your balancing skills.</p>
+                            <a href="https://akshatdev17.itch.io/unicycle-mayhem-obstaclerun" class="btn btn-secondary" target="_blank">Play on Itch.io</a>
+                        </div>
+                    </div>
+
+                    <!-- Itch.io Game 2 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            <img src="cover_images/cover_primspshotr.png" alt="Unicycle Mayhem Cover" class="card-image">                            
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Prototype Primitive Space Shooter</h3>
+                            <p class="card-text">A high-performance arcade shooter built from the ground up using Unity's Entity Component System (ECS). This prototype serves as a stress test for data-oriented design and massive entity counts.</p>
+                            <!-- <a href="" class="btn btn-secondary" target="_blank">Play on Itch.io</a> -->
+                            <a href="javascript:void(0)" class="btn btn-secondary" style="opacity: 0.6; cursor: not-allowed;" title="Work in Progress">WIP / Coming Soon</a>
+                        </div>
+                    </div>
+
+                    <!-- Itch.io Game 3 -->
+                    <div class="card">
+                        <div class="card-image-placeholder">
+                            [Game 3 Cover Image]
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">Autonomous Ludo</h3>
+                            <p class="card-text">A fully automated simulation of the classic board game where four AI bots compete without human input. It showcases custom turn-based state management and decision trees.</p>
+                            <a href="https://akshatdev17.itch.io/autonomous-ludo" class="btn btn-secondary" target="_blank">Play on Itch.io</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="container text-center">
+                <h2 class="section-title">Core Knowledge</h2>
+                <div class="flex-row wrap justify-center gap-1">
+                    <!-- Combined & Scripting Additions -->
+                    <span class="tag tag-large">Unity Engine & Editor Scripting</span>
+                    <span class="tag tag-large">C# Gameplay Scripting & OOP</span>
+                    
+                    <!-- Systems & Mechanics -->
+                    <span class="tag tag-large">Modular System Design</span>
+                    <span class="tag tag-large">Physics & Collision Mechanics</span>
+                    
+                    <!-- Tech & Pipelines -->
+                    <span class="tag tag-large">Graphics Rendering (URP / HDRP)</span>
+                    <span class="tag tag-large">Multiplayer & Network Integration</span>
+                    
+                    <!-- Platforms & Performance -->
+                    <span class="tag tag-large">Mobile Optimization & Addressables</span>
+                    <span class="tag tag-large">VR & AR Development</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <!-- <section id="contact" class="section bg-alt">
+            <div class="container text-center">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="margin-bottom-2">Open for new opportunities, collaborations.</p>
+
+                <form action="https://formspree.io/f/mkolleev" method="POST" id="contact-form" class="form-container">
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+                    <input type="email" id="email" name="_replyto" class="form-input" placeholder="Your Email" required>
+                    <textarea id="message" name="message" class="form-input" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </section> -->
+
+        <!-- Contact Section -->
+        <section id="contact" class="section bg-alt">
+            <div class="container text-center">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="margin-bottom-2">I'm always down to talk shop, share knowledge, or connect with other devs! I'm currently focused on my full-time role and not taking on freelance work right now, but my inbox is always open for networking and general game dev chats.</p>
+
+                <form action="https://formspree.io/f/mkolleev" method="POST" id="contact-form" class="form-container">
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
+                    <input type="email" id="email" name="_replyto" class="form-input" placeholder="Your Email" required>
+                    <textarea id="message" name="message" class="form-input" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========================= -->
+    <!--      SHARED FOOTER        -->
+    <!-- ========================= -->
     <footer class="footer text-center">
         <div class="container">
             <!-- Social Icons -->
@@ -36,4 +192,4 @@
 
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
