@@ -1,92 +1,30 @@
-// Wait for the DOM to fully load before attaching events
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Set current year in footer automatically
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
-    // 2. Smooth Scrolling for Navigation Links
-    const navLinks = document.querySelectorAll('.nav-link, .btn[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    // // 3. Form Connectivity Placeholder
-    // // Intercepts the form submission so you can send data to an API/backend later
-    // const contactForm = document.getElementById('contact-form');
-    
-    // if (contactForm) {
-    //     contactForm.addEventListener('submit', function(e) {
-    //         e.preventDefault(); // Prevent page reload
-            
-    //         // Gather the data from the form fields
-    //         const formData = {
-    //             name: document.getElementById('name').value,
-    //             email: document.getElementById('email').value,
-    //             message: document.getElementById('message').value
-    //         };
-
-    //         console.log("Form Data Ready to Send:", formData);
-            
-    //         // TODO: Here is where you will add your fetch() request later 
-    //         // to connect to a backend service (like Formspree, Netlify Forms, or your own API)
-            
-    //         // Provide user feedback
-    //         alert(`Thanks for reaching out, ${formData.name}! (This is a placeholder - form submission not yet connected to a backend)`);
-            
-    //         // Clear the form
-    //         contactForm.reset();
-    //     });
-    // }
-
-    document.addEventListener('DOMContentLoaded', () => {
-    // 1. Set current year in footer automatically
-    const yearSpan = document.getElementById('year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
-
-    // 2. Smooth Scrolling for Navigation Links
-    const navLinks = document.querySelectorAll('.nav-link, .btn[href^="#"]');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-});
-});
+// ==========================================
+// PORTFOLIO MASTER SWITCH
+// Change this to 'false' when you are ready to launch!
+// ==========================================
+const SHOW_WIP_PAGE = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Set current year in footer automatically
+    // 1. Toggle the views based on the Master Switch[cite: 3]
+    const wipView = document.getElementById('wip-view');
+    const mainView = document.getElementById('main-view');
+
+    if (SHOW_WIP_PAGE) {
+        if (wipView) wipView.style.display = 'block';
+        if (mainView) mainView.style.display = 'none';
+    } else {
+        if (wipView) wipView.style.display = 'none';
+        if (mainView) mainView.style.display = 'block';
+    }
+
+    // 2. Set current year in footer automatically[cite: 3]
     const yearSpan = document.getElementById('year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // 2. Smooth Scrolling for Navigation Links
+    // 3. Smooth Scrolling for Navigation Links[cite: 3]
     const navLinks = document.querySelectorAll('.nav-link, .btn[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -99,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. WIP Page: Typewriter Animation
+    // 4. WIP Page: Typewriter Animation[cite: 3]
     const loadingText = document.getElementById('loading-text');
     if (loadingText) {
         const devPhrases = [
@@ -141,76 +79,117 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
 
         let currentPhrase = devPhrases[0];
-        let charIndex = currentPhrase.length; // Start with the first phrase fully typed
+        let charIndex = currentPhrase.length;
         let isDeleting = false;
 
         function typeEffect() {
             if (isDeleting) {
-                // Backspace a character
                 loadingText.textContent = currentPhrase.substring(0, charIndex - 1);
                 charIndex--;
             } else {
-                // Type a character
                 loadingText.textContent = currentPhrase.substring(0, charIndex + 1);
                 charIndex++;
             }
 
-            // Set typing speeds (backspacing is faster)
             let typeSpeed = isDeleting ? 30 : 80;
 
-            // If the phrase is fully typed out
             if (!isDeleting && charIndex === currentPhrase.length) {
-                // Pause for a random time between 3 and 5 seconds before deleting
                 typeSpeed = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
                 isDeleting = true;
-            } 
-            // If the phrase is fully deleted
-            else if (isDeleting && charIndex === 0) {
+            } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                
-                // Pick a new random phrase that isn't the same as the last one
                 let newPhrase;
                 do {
                     newPhrase = devPhrases[Math.floor(Math.random() * devPhrases.length)];
                 } while (newPhrase === currentPhrase);
                 
                 currentPhrase = newPhrase;
-                
-                // Short pause before starting to type the new word
                 typeSpeed = 500;
             }
 
             setTimeout(typeEffect, typeSpeed);
         }
 
-        // Wait a random 3-5 seconds before triggering the first backspace sequence
         const initialDelay = Math.floor(Math.random() * (5000 - 3000 + 1)) + 3000;
         setTimeout(() => {
             isDeleting = true;
             typeEffect();
         }, initialDelay);
     }
-});
 
-// ==========================================
-// PORTFOLIO MASTER SWITCH
-// Change this to 'false' when you are ready to launch!
-// ==========================================
-const SHOW_WIP_PAGE = false;
+    // 5. Dynamic Particle Background[cite: 3]
+    const canvas = document.getElementById('bg-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // Toggle the views based on the Master Switch
-    const wipView = document.getElementById('wip-view');
-    const mainView = document.getElementById('main-view');
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
 
-    if (SHOW_WIP_PAGE) {
-        if (wipView) wipView.style.display = 'block';
-        if (mainView) mainView.style.display = 'none';
-    } else {
-        if (wipView) wipView.style.display = 'none';
-        if (mainView) mainView.style.display = 'block';
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 1.5; 
+                this.vy = (Math.random() - 0.5) * 1.5; 
+                this.radius = Math.random() * 2 + 1;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(76, 175, 80, 0.6)'; 
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            resize();
+            window.addEventListener('resize', resize);
+            particles = [];
+            const particleCount = window.innerWidth < 768 ? 40 : 80; 
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+            animateParticles();
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 120) {
+                        ctx.beginPath();
+                        const opacity = 1 - (distance / 120);
+                        ctx.strokeStyle = `rgba(76, 175, 80, ${opacity * 0.5})`;
+                        ctx.lineWidth = 1;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
     }
-
-    // ... [KEEP THE REST OF YOUR JS HERE: Year footer, Smooth Scroll, Typewriter effect] ...
 });

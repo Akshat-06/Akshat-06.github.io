@@ -1,10 +1,10 @@
 /* --- Global Variables --- */
 :root {
-    --bg-color: #121212; /* Dark theme default */
+    --bg-color: #121212; 
     --bg-alt: #1e1e1e;
     --text-primary: #e0e0e0;
     --text-secondary: #a0a0a0;
-    --accent-color: #4CAF50; /* Unity-ish Green */
+    --accent-color: #4CAF50; 
     --accent-hover: #45a049;
     --border-radius: 8px;
     --transition-speed: 0.3s;
@@ -19,7 +19,7 @@
 }
 
 body {
-    background-color: var(--bg-color);
+    background-color: transparent; /* Ensures canvas background is visible[cite: 4] */
     color: var(--text-primary);
     line-height: 1.6;
     display: flex;
@@ -44,7 +44,8 @@ a {
 }
 
 .bg-alt {
-    background-color: var(--bg-alt);
+    background-color: rgba(30, 30, 30, 0.7); 
+    backdrop-filter: blur(5px);
 }
 
 .flex-row {
@@ -135,12 +136,13 @@ a {
 
 /* --- Specific Section Styles --- */
 .navbar {
-    background-color: rgba(18, 18, 18, 0.95);
+    background-color: rgba(18, 18, 18, 0.85);
     position: sticky;
     top: 0;
     z-index: 100;
     padding: 15px 0;
     border-bottom: 1px solid #333;
+    backdrop-filter: blur(10px);
 }
 
 .nav-links {
@@ -241,20 +243,32 @@ a {
 .card-image {
     width: 100%;
     height: 200px;
-    object-fit: cover; /* This makes the image fill the space without squishing */
+    object-fit: cover; 
     display: block;
     border-bottom: 1px solid #333;
 }
 
+/* --- Animated Background --- */
+#bg-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    pointer-events: none; 
+    background-color: var(--bg-color); 
+}
+
+/* --- Footer & Animations --- */
 .footer {
     padding: 20px 0;
     background-color: #0a0a0a;
     font-size: 0.9rem;
     color: var(--text-secondary);
-    /* Add this line: */
     margin-top: auto; 
 }
-/* --- Ensure this blink class is still in your CSS --- */
+
 .blink {
     animation: blinker 1s linear infinite;
     color: var(--accent-color);
