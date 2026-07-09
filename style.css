@@ -1,0 +1,248 @@
+/* --- Global Variables --- */
+:root {
+    --bg-color: #121212; /* Dark theme default */
+    --bg-alt: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-color: #4CAF50; /* Unity-ish Green */
+    --accent-hover: #45a049;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+}
+
+/* --- Resets --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- Reusable Layout Classes --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.bg-alt {
+    background-color: var(--bg-alt);
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.margin-bottom-2 {
+    margin-bottom: 2rem;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/* --- Reusable Component Classes --- */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.tag {
+    background-color: #333;
+    color: #ddd;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.tag-large {
+    padding: 8px 16px;
+    font-size: 1rem;
+}
+
+/* --- Specific Section Styles --- */
+.navbar {
+    background-color: rgba(18, 18, 18, 0.95);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+}
+
+.nav-links {
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.hero-bg {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* Card Styling */
+.card {
+    background-color: var(--bg-color);
+    border: 1px solid #333;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: transform var(--transition-speed);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image-placeholder {
+    height: 200px;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* Form Styling */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background-color: var(--bg-color);
+    border: 1px solid #333;
+    color: var(--text-primary);
+    border-radius: var(--border-radius);
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.footer {
+    padding: 20px 0;
+    background-color: #0a0a0a;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+/* --- Ensure this blink class is still in your CSS --- */
+.blink {
+    animation: blinker 1s linear infinite;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
