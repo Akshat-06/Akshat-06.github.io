@@ -192,4 +192,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
         initParticles();
     }
+
+    // ==========================================
+    // DYNAMIC SCROLL ANIMATIONS (Bulletproof Percentage)
+    // ==========================================
+    const navbar = document.querySelector('.navbar');
+    const logo = document.querySelector('.logo');
+    const heroTitle = document.querySelector('.hero-title-container');
+    
+    function handleScroll() {
+        if (!navbar || !heroTitle || !logo) return;
+        
+        let scrollY = window.scrollY;
+        // Use window.innerHeight to guarantee we get the exact screen height every time
+        let screenHeight = window.innerHeight; 
+        
+        // Calculate what percentage of the screen has been scrolled (0.0 to 1.0)
+        let scrollPercent = scrollY / screenHeight;
+        
+        // 1. Fade out the center text based on the 70% threshold
+        let heroOpacity = 1 - (scrollPercent / 0.70);
+        if (heroOpacity < 0) heroOpacity = 0; 
+        
+        // 2. Parallax effect for the center text
+        let heroY = scrollY * 0.4; 
+        
+        heroTitle.style.opacity = heroOpacity;
+        heroTitle.style.transform = `translateY(-${heroY}px)`;
+        
+        if (heroOpacity <= 0) {
+            heroTitle.style.pointerEvents = "none";
+        } else {
+            heroTitle.style.pointerEvents = "auto";
+        }
+
+        // 3. Show the top-left logo ONLY when 70% (0.70) of the screen is scrolled up
+        if (scrollPercent > 0.70) {
+            navbar.classList.add('scrolled');
+            logo.style.opacity = '1';
+            logo.style.transform = 'translateY(0)';
+        } else {
+            navbar.classList.remove('scrolled');
+            logo.style.opacity = '0';
+            logo.style.transform = 'translateY(15px)';
+        }
+    }
+
+    // Run the function every time the user scrolls
+    window.addEventListener('scroll', handleScroll);
+    
+    // Run the function once immediately on load to set the correct initial state
+    handleScroll();
 });

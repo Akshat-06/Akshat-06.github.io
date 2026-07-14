@@ -135,19 +135,67 @@ a {
 }
 
 /* --- Specific Section Styles --- */
+/* --- Navbar & Logo Transitions --- */
 .navbar {
     background-color: rgba(18, 18, 18, 0.85);
     position: sticky;
     top: 0;
     z-index: 100;
     padding: 15px 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid transparent; 
     backdrop-filter: blur(10px);
+    transition: border-bottom 0.3s ease;
+}
+
+.navbar.scrolled {
+    border-bottom: 1px solid #333;
+}
+
+/* The JS will handle the logo's appearance, we just set the transition here */
+.logo {
+    opacity: 0; 
+    transform: translateY(15px); 
+    transition: all 0.3s ease-out;
+}
+
+/* --- Hero Section --- */
+.hero-bg {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+/* We removed the .hero-scrolled classes because JS will update this directly */
+.hero-title-container {
+    will-change: transform, opacity; /* Optimizes performance for scrolling */
 }
 
 .nav-links {
     list-style: none;
     gap: 20px;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+   ========================================== */
+@media (max-width: 768px) {
+    /* Stack the logo and the nav links vertically on small screens */
+    .navbar .container.flex-row {
+        flex-direction: column;
+        gap: 10px; /* Adds a little breathing room between logo and links */
+    }
+    
+    /* Force the links to stay in a single row side-by-side */
+    .nav-links {
+        display: flex;
+        flex-direction: row; 
+        justify-content: center;
+        flex-wrap: nowrap; /* Prevents them from breaking into multiple lines */
+        gap: 20px;
+        padding: 0;
+    }
 }
 
 .nav-link:hover {
